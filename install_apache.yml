@@ -1,0 +1,11 @@
+---
+- hosts: all
+
+  tasks:
+          -name:    Install Apache webserver
+          command:  yum install --quiet -y httpd httpd-devel
+          -name:    Backup configuration files
+          command:  cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd.conf_previous
+          -name:    Start Apache webserver and configure it to run at boot time
+          command:  service httpd start
+          -command: chkconfig httpd on
